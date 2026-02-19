@@ -158,7 +158,7 @@ disable-model-invocation: true
 より高度な機能については [advanced.md](advanced.md) を参照。
 
 - **変数**: `$ARGUMENTS`, `${CLAUDE_SESSION_ID}` による動的な値の埋め込み
-- **動的コンテキスト注入**: `` !`command` `` 構文でシェルコマンド出力をスキルに埋め込む
+- **動的コンテキスト注入**: シェルコマンド出力をスキルに埋め込む（詳細は [advanced.md](advanced.md) を参照）
 - **サブエージェント実行**: `context: fork` による分離実行とエージェントタイプの選択
 - **アクセス制御**: 特定スキルの許可・拒否ルール
 - **Extended Thinking**: ultrathink による拡張思考の有効化
