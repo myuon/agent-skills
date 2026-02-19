@@ -17,20 +17,17 @@ Claude Code skills collection.
 npx skills add myuon/agent-skills --list
 
 # Install specific skills
-npx skills add myuon/agent-skills --skill commit --skill gh
+npx skills add myuon/agent-skills --skill commit --skill gh -y
 
 # Install to specific agents
-npx skills add myuon/agent-skills -a claude-code -a opencode
-
-# Non-interactive installation (CI/CD friendly)
-npx skills add myuon/agent-skills --skill commit -g -a claude-code -y
+npx skills add myuon/agent-skills -a claude-code -a opencode -y
 
 # Install all skills from this repo to all agents
-npx skills add myuon/agent-skills --all
+npx skills add myuon/agent-skills --all -y
 
 # Install all skills to specific agents
-npx skills add myuon/agent-skills --skill '*' -a claude-code
+npx skills add myuon/agent-skills --skill '*' -a claude-code -y
 
 # Install specific skills to all agents
-npx skills add myuon/agent-skills --agent '*' --skill commit
+npx skills add myuon/agent-skills --agent '*' --skill commit -y
 ```
