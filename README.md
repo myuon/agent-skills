@@ -16,7 +16,7 @@ Claude Code skills collection.
 # List skills in this repository
 npx skills add myuon/agent-skills --list
 
-# Install specific skills
+# Install specific skills (add -g for global installation)
 npx skills add myuon/agent-skills --skill commit --skill gh -y
 
 # Install to specific agents
