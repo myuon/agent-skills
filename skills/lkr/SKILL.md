@@ -7,8 +7,8 @@ user-invocable: false
 # LLM Key Ring (lkr)
 
 ```bash
-lkr set ANTHROPIC_API_KEY    # キーを登録（Keychainに保存）
-lkr get ANTHROPIC_API_KEY    # キーを取得
+lkr set MY_API_KEY           # キーを登録（Keychainに保存）
+lkr get MY_API_KEY           # キーを取得
 lkr list                     # 登録済みキー一覧
 lkr run -- some-command      # 環境変数として注入して実行
 ```
