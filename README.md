@@ -9,6 +9,7 @@ Claude Code skills collection.
 | `commit` | Conventional Commits に従って git commit を実行 |
 | `create-agent-skills` | 新しい Claude Code スキルを作成するためのガイド |
 | `gh` | GitHub CLI (gh) で Issue・Sub-issue・PR・CI を操作するためのクイックリファレンス |
+| `ghq` | ghq を使ったリポジトリの検索・クローン・作成・移動を支援 |
 
 ## Usecases
 
