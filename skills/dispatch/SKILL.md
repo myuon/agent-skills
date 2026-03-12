@@ -1,10 +1,10 @@
 ---
-name: task-triage
+name: dispatch
 description: ユーザーがタスク一覧に対して実装を求めてきた際に参照するスキル。複数のイシューを同時に取り組むためのワークフロー。
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Agent
 ---
 
-# Task Triage
+# Dispatch
 
 タスク一覧を「リファイン必要」と「実装着手可能」に振り分け、それぞれ処理する。
 
