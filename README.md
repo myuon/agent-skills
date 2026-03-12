@@ -9,6 +9,7 @@ Claude Code skills collection.
 | `commit` | Conventional Commits に従って git commit を実行 |
 | `create-agent-skills` | 新しい Claude Code スキルを作成するためのガイド |
 | `gh` | GitHub CLI (gh) で Issue・Sub-issue・PR・CI を操作するためのクイックリファレンス |
+| `task-triage` | タスク一覧を分析し「実装可能」と「リファイン必要」に振り分け |
 
 ## Usecases
 
