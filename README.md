@@ -8,7 +8,9 @@ Claude Code skills collection.
 |-------|-------------|
 | `commit` | Conventional Commits に従って git commit を実行 |
 | `create-agent-skills` | 新しい Claude Code スキルを作成するためのガイド |
+| `dispatch` | 複数のイシューを同時に振り分け・実装するワークフロー |
 | `gh` | GitHub CLI (gh) で Issue・Sub-issue・PR・CI を操作するためのクイックリファレンス |
+| `lkr` | macOS Keychain を使った API キー管理ツールのリファレンス |
 
 ## Usecases
 
