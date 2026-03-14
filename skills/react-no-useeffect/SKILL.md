@@ -1,10 +1,12 @@
 ---
 name: react-no-useeffect
-description: React の useEffect を避け、より適切なパターンに置き換えるためのガイド。コードレビューで useEffect を検出したとき、代替パターンを提案するために使う。
+description: React の useEffect を避け、より適切なパターンに置き換えるためのガイド。useEffect を含むコードを書こうとしているとき、またはコードレビューで useEffect を検出したとき、代替パターンを提案するために使う。
 user-invocable: false
 ---
 
 # React: useEffect を使わない設計パターン
+
+参考: [You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect)
 
 ## useEffect の代替パターン一覧
 
