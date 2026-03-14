@@ -75,7 +75,7 @@ const router = createBrowserRouter([
 ]);
 
 function UserPage() {
-  const user = useLoaderData() as User;
+  const user = useLoaderData<User>();
   return <div>{user.name}</div>;
 }
 
