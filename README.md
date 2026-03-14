@@ -10,6 +10,7 @@ Claude Code skills collection.
 | `create-agent-skills` | 新しい Claude Code スキルを作成するためのガイド |
 | `dispatch` | 複数のイシューを同時に振り分け・実装するワークフロー |
 | `gh` | GitHub CLI (gh) で Issue・Sub-issue・PR・CI を操作するためのクイックリファレンス |
+| `ghq` | ghq を使ったリポジトリ管理のクイックリファレンス |
 | `lkr` | macOS Keychain を使った API キー管理ツールのリファレンス |
 
 ## Usecases
