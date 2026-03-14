@@ -1,14 +1,29 @@
 ---
 name: react-router-loader
-description: React Router v7 の loader パターンのリファレンス。データフェッチ、型安全な useLoaderData、エラーハンドリング、defer/Await による streaming を扱う。
+description: React Router v7 の loader パターンのリファレンス。画面表示に伴うデータフェッチに loader を使うことでデータの流れを一方向にし、コードの見通しを良くし、不要な useEffect の利用を抑制する。
 user-invocable: false
 ---
 
 # React Router Loader
 
-React Router v7 (framework mode) の loader パターン。
+画面表示に伴うデータフェッチには loader パターンを使う。データの流れを一方向（loader → コンポーネント）にすることで、コードの見通しが良くなり、不要な useEffect を排除できる。
 
-## 基本的な loader
+## モードの判別方法
+
+React Router v7 には 3 つのモードがあり、loader の書き方が異なる。
+
+| 判別ポイント | Framework Mode | Data Mode | Declarative Mode |
+|---|---|---|---|
+| `vite.config.ts` に `reactRouter()` プラグイン | ✅ | — | — |
+| `routes.ts` ファイルが存在 | ✅ | — | — |
+| `createBrowserRouter` を使用 | — | ✅ | — |
+| `<BrowserRouter>` を使用 | — | — | ✅ |
+
+Declarative Mode では loader は使えない。
+
+## Framework Mode
+
+`@react-router/dev` の Vite プラグインを使うモード。ファイルベースルーティング・型安全な loader。
 
 ```tsx
 // app/routes/users.tsx
@@ -28,61 +43,44 @@ export default function Users({ loaderData }: Route.ComponentProps) {
 }
 ```
 
-## エラーハンドリング
+## Data Mode
+
+`createBrowserRouter` を使うモード。Vite プラグイン不要。
 
 ```tsx
-// loader で throw した Response は ErrorBoundary でキャッチ
+import { createBrowserRouter, RouterProvider, useLoaderData } from "react-router";
+
+const router = createBrowserRouter([
+  {
+    path: "/users/:id",
+    Component: UserPage,
+    loader: async ({ params }) => {
+      const res = await fetch(`/api/users/${params.id}`);
+      if (!res.ok) throw new Response("Not Found", { status: 404 });
+      return res.json();
+    },
+  },
+]);
+
+function UserPage() {
+  const user = useLoaderData();
+  return <div>{user.name}</div>;
+}
+
+// エントリポイント
+ReactDOM.createRoot(root).render(<RouterProvider router={router} />);
+```
+
+## エラーハンドリング
+
+loader で throw した Response は ErrorBoundary でキャッチされる。
+
+```tsx
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   if (isRouteErrorResponse(error)) {
     return <div>{error.status}: {error.data}</div>;
   }
   return <div>Unexpected error</div>;
-}
-```
-
-## defer / Await (streaming)
-
-```tsx
-import { Suspense } from "react";
-import { Await } from "react-router";
-
-export async function loader({ params }: Route.LoaderArgs) {
-  const userPromise = db.user.findUnique({ where: { id: params.id } });
-  const posts = await db.post.findMany({ where: { userId: params.id } });
-  return { posts, userPromise };
-}
-
-export default function UserPage({ loaderData }: Route.ComponentProps) {
-  const { posts, userPromise } = loaderData;
-  return (
-    <div>
-      <PostList posts={posts} />
-      <Suspense fallback={<p>Loading user...</p>}>
-        <Await resolve={userPromise}>
-          {(user) => <UserProfile user={user} />}
-        </Await>
-      </Suspense>
-    </div>
-  );
-}
-```
-
-## ネストルートでの loader
-
-```tsx
-// app/routes/dashboard.tsx (親)
-export async function loader({ request }: Route.LoaderArgs) {
-  const user = await requireAuth(request);
-  return { user };
-}
-
-// app/routes/dashboard.settings.tsx (子)
-// 親の loader データには useRouteLoaderData でアクセス
-import { useRouteLoaderData } from "react-router";
-
-export default function Settings() {
-  const dashboardData = useRouteLoaderData("routes/dashboard");
-  return <div>{dashboardData?.user.name}</div>;
 }
 ```
 
