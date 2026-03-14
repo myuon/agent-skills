@@ -12,6 +12,7 @@ Claude Code skills collection.
 | `gh` | GitHub CLI (gh) で Issue・Sub-issue・PR・CI を操作するためのクイックリファレンス |
 | `lkr` | macOS Keychain を使った API キー管理ツールのリファレンス |
 | `react-no-useeffect` | React の useEffect を避け、より適切なパターンに置き換えるためのガイド |
+| `react-router-loader` | React Router v7 の loader パターンのリファレンス |
 
 ## Usecases
 
