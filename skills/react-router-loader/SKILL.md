@@ -20,32 +20,6 @@ React Router v7 には 3 つのモードがあり、loader の書き方が異な
 
 Declarative Mode では loader は使えない。
 
-## Framework Mode
-
-`@react-router/dev` の Vite プラグインを使うモード。ファイルベースルーティング・型安全な loader。
-
-`./+types/` ディレクトリに自動生成される型を使うことで、loader の戻り値がコンポーネントの props に型安全に渡される。
-
-```tsx
-// app/routes/users.tsx
-import type { Route } from "./+types/users";
-
-// Route.LoaderArgs で params, request の型が付く
-export async function loader({ params, request }: Route.LoaderArgs) {
-  const user = await db.user.findUnique({ where: { id: params.id } });
-  if (!user) {
-    throw new Response("Not Found", { status: 404 });
-  }
-  return { user };
-}
-
-// Route.ComponentProps により loaderData の型が loader の戻り値から自動推論される
-export default function Users({ loaderData }: Route.ComponentProps) {
-  const { user } = loaderData;
-  return <div>{user.name}</div>;
-}
-```
-
 ## Data Mode
 
 `createBrowserRouter` を使うモード。Vite プラグイン不要。
@@ -81,6 +55,32 @@ function UserPage() {
 
 // エントリポイント
 ReactDOM.createRoot(root).render(<RouterProvider router={router} />);
+```
+
+## Framework Mode
+
+`@react-router/dev` の Vite プラグインを使うモード。ファイルベースルーティング・型安全な loader。
+
+`./+types/` ディレクトリに自動生成される型を使うことで、loader の戻り値がコンポーネントの props に型安全に渡される。
+
+```tsx
+// app/routes/users.tsx
+import type { Route } from "./+types/users";
+
+// Route.LoaderArgs で params, request の型が付く
+export async function loader({ params, request }: Route.LoaderArgs) {
+  const user = await db.user.findUnique({ where: { id: params.id } });
+  if (!user) {
+    throw new Response("Not Found", { status: 404 });
+  }
+  return { user };
+}
+
+// Route.ComponentProps により loaderData の型が loader の戻り値から自動推論される
+export default function Users({ loaderData }: Route.ComponentProps) {
+  const { user } = loaderData;
+  return <div>{user.name}</div>;
+}
 ```
 
 ## エラーハンドリング
