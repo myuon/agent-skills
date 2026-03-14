@@ -15,7 +15,6 @@ React Router v7 には 3 つのモードがあり、loader の書き方が異な
 | 判別ポイント | Framework Mode | Data Mode | Declarative Mode |
 |---|---|---|---|
 | `vite.config.ts` に `reactRouter()` プラグイン | ✅ | — | — |
-| `routes.ts` ファイルが存在 | ✅ | — | — |
 | `createBrowserRouter` を使用 | — | ✅ | — |
 | `<BrowserRouter>` を使用 | — | — | ✅ |
 
@@ -25,10 +24,13 @@ Declarative Mode では loader は使えない。
 
 `@react-router/dev` の Vite プラグインを使うモード。ファイルベースルーティング・型安全な loader。
 
+`./+types/` ディレクトリに自動生成される型を使うことで、loader の戻り値がコンポーネントの props に型安全に渡される。
+
 ```tsx
 // app/routes/users.tsx
 import type { Route } from "./+types/users";
 
+// Route.LoaderArgs で params, request の型が付く
 export async function loader({ params, request }: Route.LoaderArgs) {
   const user = await db.user.findUnique({ where: { id: params.id } });
   if (!user) {
@@ -37,6 +39,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   return { user };
 }
 
+// Route.ComponentProps により loaderData の型が loader の戻り値から自動推論される
 export default function Users({ loaderData }: Route.ComponentProps) {
   const { user } = loaderData;
   return <div>{user.name}</div>;
@@ -48,13 +51,22 @@ export default function Users({ loaderData }: Route.ComponentProps) {
 `createBrowserRouter` を使うモード。Vite プラグイン不要。
 
 ```tsx
-import { createBrowserRouter, RouterProvider, useLoaderData } from "react-router";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useLoaderData,
+} from "react-router";
+
+interface User {
+  id: string;
+  name: string;
+}
 
 const router = createBrowserRouter([
   {
     path: "/users/:id",
     Component: UserPage,
-    loader: async ({ params }) => {
+    loader: async ({ params }): Promise<User> => {
       const res = await fetch(`/api/users/${params.id}`);
       if (!res.ok) throw new Response("Not Found", { status: 404 });
       return res.json();
@@ -63,7 +75,7 @@ const router = createBrowserRouter([
 ]);
 
 function UserPage() {
-  const user = useLoaderData();
+  const user = useLoaderData() as User;
   return <div>{user.name}</div>;
 }
 
@@ -94,3 +106,9 @@ export async function loader({ request }: Route.LoaderArgs) {
   return { results: await search(q) };
 }
 ```
+
+## 参考リンク
+
+- [React Router 公式ドキュメント](https://reactrouter.com/)
+- [Route Module - loader](https://reactrouter.com/start/framework/route-module#loader)
+- [Picking a Router](https://reactrouter.com/start/library/routing)
