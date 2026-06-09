@@ -17,7 +17,7 @@ Claude Code skills collection.
 | `react-no-useeffect` | React の useEffect を避け、より適切なパターンに置き換えるためのガイド | `apm install myuon/agent-skills --skill react-no-useeffect` |
 | `react-router-loader` | React Router v7 の loader パターンのリファレンス | `apm install myuon/agent-skills --skill react-router-loader` |
 | `expo/skills` | Expo / React Native 固有のベストプラクティス（[Expo 公式スキル](https://github.com/expo/skills)） | `apm install expo/skills -g` |
-| `architecture-decision-records` | 設計上の意思決定を構造化された ADR ドキュメントとして残す（[wshobson/agents](https://github.com/wshobson/agents)） | `apm install wshobson/agents --skill architecture-decision-records` |
+| `architecture-decision-records` | 設計上の意思決定を構造化された ADR ドキュメントとして残す（[wshobson/agents](https://github.com/wshobson/agents)） | `apm install wshobson/agents --skill architecture-decision-records -g` |
 
 ## Tips
 
