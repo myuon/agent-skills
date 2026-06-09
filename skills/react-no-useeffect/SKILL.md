@@ -157,3 +157,11 @@ useEffect を見つけたら以下を確認する:
 2. **データフェッチしているか?** → React Query / SWR / loader に置き換える
 3. **subscribe/addEventListener しているか?** → useSyncExternalStore を検討
 4. **deps に props/state があり、別の state を更新しているか?** → 不要な useEffect の典型パターン
+
+## インストール
+
+[apm](https://github.com/microsoft/apm) でプロジェクトにインストールする:
+
+```bash
+apm install myuon/agent-skills --skill react-no-useeffect
+```

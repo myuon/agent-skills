@@ -145,3 +145,11 @@ gh pr merge <pr-number> --merge --delete-branch
 # squash merge
 gh pr merge <pr-number> --squash --delete-branch
 ```
+
+## インストール
+
+[apm](https://github.com/microsoft/apm) でグローバルにインストールする:
+
+```bash
+apm install myuon/agent-skills --skill gh -g
+```

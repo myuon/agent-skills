@@ -114,3 +114,11 @@ refactor: 認証ミドルウェアを分離
 
 - 破壊的変更がある場合は `BREAKING CHANGE:` をフッターに記載
 - `.gitignore` を更新した場合は、そのことをコミットメッセージに含める
+
+## インストール
+
+[apm](https://github.com/microsoft/apm) でグローバルにインストールする:
+
+```bash
+apm install myuon/agent-skills --skill commit -g
+```
