@@ -6,6 +6,7 @@ Claude Code skills collection.
 
 | Skill | Description |
 |-------|-------------|
+| `babysit` | コメントのトリアージ・コンフリクト解消・CI 修正を繰り返して PR をマージ可能な状態に保つ |
 | `commit` | Conventional Commits に従って git commit を実行 |
 | `create-agent-skills` | 新しい Claude Code スキルを作成するためのガイド |
 | `dispatch` | 複数のイシューを同時に振り分け・実装するワークフロー |
