@@ -33,6 +33,14 @@ Expo 公式スキルを追加して、Expo/React Native 固有のベストプラ
 npx skills add expo/skills -g -y
 ```
 
+### アーキテクチャ上の意思決定を記録する
+
+ADR (Architecture Decision Records) スキルを追加して、設計上の意思決定を構造化されたドキュメントとして残す。
+
+```bash
+npx skills add https://github.com/wshobson/agents --skill architecture-decision-records
+```
+
 ## Installation
 
 ```bash
