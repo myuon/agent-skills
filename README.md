@@ -4,61 +4,30 @@ Claude Code skills collection.
 
 ## Skills
 
-| Skill | Description |
-|-------|-------------|
-| `babysit` | コメントのトリアージ・コンフリクト解消・CI 修正を繰り返して PR をマージ可能な状態に保つ |
-| `commit` | Conventional Commits に従って git commit を実行 |
-| `create-agent-skills` | 新しい Claude Code スキルを作成するためのガイド |
-| `dispatch` | 複数のイシューを同時に振り分け・実装するワークフロー |
-| `gh` | GitHub CLI (gh) で Issue・Sub-issue・PR・CI を操作するためのクイックリファレンス |
-| `lkr` | macOS Keychain を使った API キー管理ツールのリファレンス |
-| `react-no-useeffect` | React の useEffect を避け、より適切なパターンに置き換えるためのガイド |
-| `react-router-loader` | React Router v7 の loader パターンのリファレンス |
+使いたいスキルの Install コマンドをそのまま実行すればインストールできる。インストールには [apm](https://github.com/microsoft/apm) を使う。`-g` を付けるとグローバル（ユーザースコープ）に、付けないとカレントプロジェクトにインストールされる。
 
-## Usecases
+| Skill | Description | Install |
+|-------|-------------|---------|
+| `babysit` | コメントのトリアージ・コンフリクト解消・CI 修正を繰り返して PR をマージ可能な状態に保つ | `apm install myuon/agent-skills --skill babysit -g` |
+| `commit` | Conventional Commits に従って git commit を実行 | `apm install myuon/agent-skills --skill commit -g` |
+| `create-agent-skills` | 新しい Claude Code スキルを作成するためのガイド | `apm install myuon/agent-skills --skill create-agent-skills -g` |
+| `dispatch` | 複数のイシューを同時に振り分け・実装するワークフロー | `apm install myuon/agent-skills --skill dispatch -g` |
+| `gh` | GitHub CLI (gh) で Issue・Sub-issue・PR・CI を操作するためのクイックリファレンス | `apm install myuon/agent-skills --skill gh -g` |
+| `lkr` | macOS Keychain を使った API キー管理ツールのリファレンス | `apm install myuon/agent-skills --skill lkr -g` |
+| `react-no-useeffect` | React の useEffect を避け、より適切なパターンに置き換えるためのガイド | `apm install myuon/agent-skills --skill react-no-useeffect` |
+| `react-router-loader` | React Router v7 の loader パターンのリファレンス | `apm install myuon/agent-skills --skill react-router-loader` |
+| `expo/skills` | Expo / React Native 固有のベストプラクティス（[Expo 公式スキル](https://github.com/expo/skills)） | `apm install expo/skills -g` |
+| `architecture-decision-records` | 設計上の意思決定を構造化された ADR ドキュメントとして残す（[wshobson/agents](https://github.com/wshobson/agents)） | `apm install wshobson/agents --skill architecture-decision-records -g` |
 
-### 長期的なプロジェクトや開発
-
-Conventional Commits によるコミット管理と GitHub CLI 操作を導入して、開発ワークフローを整える。
-
-```bash
-npx skills add myuon/agent-skills --skill commit --skill gh -g -y
-```
-
-### React Native + Expo を使ったアプリ開発
-
-Expo 公式スキルを追加して、Expo/React Native 固有のベストプラクティスを適用する。
+## Tips
 
 ```bash
-npx skills add expo/skills -g -y
-```
+# 複数のスキルをまとめてインストール
+apm install myuon/agent-skills --skill commit --skill gh -g
 
-### アーキテクチャ上の意思決定を記録する
+# このリポジトリのすべてのスキルをインストール
+apm install myuon/agent-skills --skill '*' -g
 
-ADR (Architecture Decision Records) スキルを追加して、設計上の意思決定を構造化されたドキュメントとして残す。
-
-```bash
-npx skills add https://github.com/wshobson/agents --skill architecture-decision-records
-```
-
-## Installation
-
-```bash
-# List skills in this repository
-npx skills add myuon/agent-skills --list
-
-# Install specific skills (add -g for global installation)
-npx skills add myuon/agent-skills --skill commit --skill gh -y
-
-# Install to specific agents
-npx skills add myuon/agent-skills -a claude-code -a opencode -y
-
-# Install all skills from this repo to all agents
-npx skills add myuon/agent-skills --all -y
-
-# Install all skills to specific agents
-npx skills add myuon/agent-skills --skill '*' -a claude-code -y
-
-# Install specific skills to all agents
-npx skills add myuon/agent-skills --agent '*' --skill commit -y
+# 特定のエージェント向けにインストール
+apm install myuon/agent-skills --skill commit --target claude
 ```
