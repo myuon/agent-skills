@@ -12,11 +12,3 @@ lkr get MY_API_KEY           # キーを取得
 lkr list                     # 登録済みキー一覧
 lkr run -- some-command      # 環境変数として注入して実行
 ```
-
-## インストール
-
-[apm](https://github.com/microsoft/apm) でグローバルにインストールする:
-
-```bash
-apm install myuon/agent-skills --skill lkr -g
-```

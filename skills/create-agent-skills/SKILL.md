@@ -169,11 +169,3 @@ disable-model-invocation: true
 
 - [Agent Skills Specification](https://agentskills.io/specification) - Agent Skills オープンスタンダードの仕様
 - [Claude Code Skills](https://code.claude.com/docs/ja/skills) - Claude Code でのスキルの作成・管理・共有
-
-## インストール
-
-[apm](https://github.com/microsoft/apm) でグローバルにインストールする:
-
-```bash
-apm install myuon/agent-skills --skill create-agent-skills -g
-```
