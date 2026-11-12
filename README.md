@@ -13,6 +13,7 @@ Claude Code skills collection.
 | `create-agent-skills` | 新しい Claude Code スキルを作成するためのガイド | `apm install myuon/agent-skills --skill create-agent-skills -g` |
 | `dispatch` | 複数のイシューを同時に振り分け・実装するワークフロー | `apm install myuon/agent-skills --skill dispatch -g` |
 | `gh` | GitHub CLI (gh) で Issue・Sub-issue・PR・CI を操作するためのクイックリファレンス | `apm install myuon/agent-skills --skill gh -g` |
+| `arena` | AI エージェントに自由に改善させるアリーナ(採点環境)の作り方と堅牢化。契約、データの封印、採用の門、模擬評価器、打ち切り、ダッシュボード |
 | `lkr` | macOS Keychain を使った API キー管理ツールのリファレンス | `apm install myuon/agent-skills --skill lkr -g` |
 | `react-no-useeffect` | React の useEffect を避け、より適切なパターンに置き換えるためのガイド | `apm install myuon/agent-skills --skill react-no-useeffect` |
 | `react-router-loader` | React Router v7 の loader パターンのリファレンス | `apm install myuon/agent-skills --skill react-router-loader` |
